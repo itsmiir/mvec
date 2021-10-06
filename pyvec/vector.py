@@ -104,7 +104,7 @@ class Vector(object):
                     pass
         return sum
 
-    def orthog(self, other):
+    def cross(self, other):
         x = self.y() * other.z() - self.z() * other.y()
         y = self.z() * other.x() - self.x() * other.z()
         z = self.x() * other.y() - self.y() * other.x()
@@ -113,7 +113,7 @@ class Vector(object):
     def scalarProjection(self, other):
         return self.magnitude() * cos(self.anglebetween(other))
 
-    def anglebetween(self, other):
+    def angleTo(self, other):
         return acos(self.dot(other) / (self.magnitude() * other.magnitude()))
 
     def toArray(self, rnd=False, r=5):
@@ -160,7 +160,10 @@ class Vector(object):
                 v.append(m * cos(i))
             return Vector(v)
         except TypeError:
-            return Vector([m * cos(i), m * sin(i)])
+            try:
+                return Vector([m * cos(i), m * sin(i)])
+            except Exception as e:
+                raise e
 
     def fromMagnitudeDeg(m, alphas):
         v = []
@@ -216,4 +219,3 @@ class Vector(object):
 
 v = Vector([7, 6])
 print(v)
-print((v + 9 + Vector([7, 6, 6, 4])).toArray())
