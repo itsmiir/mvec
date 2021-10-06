@@ -4,7 +4,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name='pyvec',
+    name='nvec',
     version='1.0.0',
     author='miir',
     author_email='itsmiir@outlook.com',
@@ -16,6 +16,6 @@ setuptools.setup(
         "Bug Tracker": "https://github.com/itsmiir/pyvec/issues"
     },
     license='MIT',
-    packages=['pyvec'],
+    packages=['nvec'],
     install_requires=['']
 )
