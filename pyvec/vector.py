@@ -13,34 +13,44 @@ class Vector(object):
 
     def __add__(self, other):
         v = []
-        if self.dimensions() >= other.dimensions():
-            for i in range(self.dimensions()):
-                try:
-                    v.append(self.d[i] + other.d[i])
-                except Exception:
-                    v.append(self.d[i])
-        else:
-            for i in range(other.dimensions()):
-                try:
-                    v.append(self.d[i] + other.d[i])
-                except Exception:
-                    v.append(other.d[i])
+        try:
+            if self.dimensions() >= other.dimensions():
+                for i in range(self.dimensions()):
+                    try:
+                        v.append(self.d[i] + other.d[i])
+                    except Exception:
+                        v.append(self.d[i])
+            else:
+                for i in range(other.dimensions()):
+                    try:
+                        v.append(self.d[i] + other.d[i])
+                    except Exception:
+                        v.append(other.d[i])
+        except AttributeError:
+            m = self.magnitude() + other
+            unit = self.unitVector()
+            return unit.scale(m)
         return Vector(v)
 
     def __sub__(self, other):
         v = []
-        if self.dimensions() >= other.dimensions():
-            for i in range(self.dimensions()):
-                try:
-                    v.append(self.d[i] - other.d[i])
-                except Exception:
-                    v.append(self.d[i])
-        else:
-            for i in range(other.dimensions()):
-                try:
-                    v.append(self.d[i] - other.d[i])
-                except Exception:
-                    v.append(-other.d[i])
+        try:
+            if self.dimensions() >= other.dimensions():
+                for i in range(self.dimensions()):
+                    try:
+                        v.append(self.d[i] - other.d[i])
+                    except Exception:
+                        v.append(self.d[i])
+            else:
+                for i in range(other.dimensions()):
+                    try:
+                        v.append(self.d[i] - other.d[i])
+                    except Exception:
+                        v.append(-other.d[i])
+        except AttributeError:
+            m = self.magnitude() - other
+            unit = self.unitVector()
+            return unit.scale(m)
         return Vector(v)
 
     def __eq__(self, other):
@@ -203,3 +213,7 @@ class Vector(object):
 
     def perpendicular(self, other):
         return (self.anglebetween(other) == (pi / 2))
+
+v = Vector([7, 6])
+print(v)
+print((v + 9 + Vector([7, 6, 6, 4])).toArray())
