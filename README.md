@@ -1,4 +1,4 @@
-# pyvec
+# nvec
 
 a simple package for handling vectors of any size.
 
@@ -11,16 +11,12 @@ defining a vector is as simple as passing the constructor an n-dimensional array
 ```python
 v = Vector([a, b, c,... y, z])
 ```
-you can also create `Vector`s using magnitude/direction notation:
+you can also create `Vector`s in other ways:
 ```python
-# using magnitude, and the angle from each axis
-v1 = Vector.fromMagnitudeRad(m, [α, β, ɣ,...])
-
 # the vector between two points in n-dimensional space
 v2 = Vector.fromTwoPoints([a₁, b₁, c₁,...], [a₂, b₂, c₂,...])
 
 # for the special case of 3D vectors in a spherical coordinate system 
-# (note this is NOT the same as Vector.fromMagnitudeRad(r, [θ, φ])
 v3 = Vector.fromSpherical(r, θ, φ)
 ```
 
@@ -56,11 +52,31 @@ angle = v1.alphaRad(i)
 
 ```
 
-you can also use the good ol' `+` and `-` operators to add and subtract both vectors and scalars!
+you can also use built-in operators to do math with vectors and scalars!
 ```python
 # v2 is a vector in the same direction as v1 but its length is 5 more
-v2 = v1 + 5
+v2 = v1 + 5 
+# v1 is now the difference between v1 and v2
+v1 -= v2
 
-# v3 is the difference between v1 and v2
-v3 = v1 - v2
+v3 = v1 + v2
+
+# equivalent to scaling v1 by 6 or 1/5 respectively
+v2 = v1 * 6
+v1 =/ 5
+
+# compares magnitudes
+v1 >= v2
+v1 < v2
+```
+
+you can also iterate over the components of a vector:
+```python
+v1 = Vector([2, 4, 6])
+for i in v1:
+	print(i)
+# 2
+# 4
+# 6
+# >>>
 ```
