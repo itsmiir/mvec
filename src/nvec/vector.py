@@ -1,5 +1,4 @@
 from math import radians, cos, sin, sqrt, acos, degrees, pi
-import vecpy
 
 class Vector(object):
     def __init__(self, d):
@@ -156,7 +155,7 @@ class Vector(object):
 
     def cross(self, other):
         if self.dimensions() > 3 or other.dimensions() > 3:
-            raise ValueError("This function is implemented only for <4D vectors!")
+            raise ValueError("This function is implemented for <4D vectors!")
         x = self.y() * other.z() - self.z() * other.y()
         y = self.z() * other.x() - self.x() * other.z()
         z = self.x() * other.y() - self.y() * other.x()
@@ -272,4 +271,3 @@ class Vector(object):
         return (abs(self.anglebetween(other) - (pi / 2)) <= tolerance)
 
 
-v1 = vecpy.Vector(6, 5)
