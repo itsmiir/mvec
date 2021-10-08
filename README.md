@@ -1,4 +1,4 @@
-# nvec
+# mvec
 
 a simple package for handling vectors of any size.
 
