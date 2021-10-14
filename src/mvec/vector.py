@@ -1,4 +1,5 @@
-from math import radians, cos, sin, sqrt, acos, degrees, pi
+from math import cos, sin, sqrt, acos, degrees, pi
+
 
 class Vector(object):
     def __init__(self, d):
