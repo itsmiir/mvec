@@ -7,9 +7,14 @@ class Vector(object):
         self.__d = d
 
     def __str__(self):
-        i = self.dimensions()
+        n = self.dimensions()
         f = round(self.magnitude(), 3)
-        return(str(i) + "D Vector of length " + str(f))
+        s = ""
+        for i in range(n):
+            s +=(str(self.c(i)))
+            if (i != n-1):
+                s +=", "
+        return("Vector <"+s+ ">, |" + str(f)+"|")
 
     def __add__(self, other):
         v = []
