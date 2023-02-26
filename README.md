@@ -6,6 +6,14 @@ all* your favorite vector operations are here, and generalized to n-dimensional 
 
 **\*disclaimer: i still haven't figured out how to implement the cross product in n dimensions, so right now, it only works on vectors <= 3 dimensions. sorry**
 
+# installation
+
+mvec is hosted on the python package index; you can install it with the following command:
+
+```
+pip install mvec
+```
+
 # examples
 defining a vector is as simple as passing the constructor an n-dimensional array of scalar values!
 ```python
